@@ -1,0 +1,12 @@
+.hlx/*
+coverage/*
+logs/*
+node_modules/*
+
+helix-importer-ui
+.idea/*
+.vscode/*
+.DS_Store
+*/.DS_Store
+*/*/.DS_Store
+*.bak

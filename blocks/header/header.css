@@ -1,0 +1,313 @@
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable declaration-block-single-line-max-declarations */
+
+body.no-scroll { overflow: hidden }
+
+body > main {
+  position: relative;
+  left: 0;
+  transition: var(--nav-transition-time);
+}
+
+body.nav-open > main,
+body.nav-open footer {
+  width: 100vw;
+  left: 250px;
+}
+
+body .overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  background: #000;
+  opacity: 0;
+  height: 0;
+  transition: opacity .2s;
+}
+
+body.nav-open .overlay,
+body.modal-open .overlay {
+  height: 100vh;
+  opacity: .8;
+}
+
+header .logo img {
+  max-width: 100px;
+  align-self: center;
+  position: absolute;
+  width: 60px;
+  height: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: transparent;
+  font-size: 0;
+}
+
+header button.login {
+  position: absolute;
+  top: -5px;
+  right: 25px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 25px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  transition: all .3s ease-in-out;
+}
+
+header button.login:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* nav button - hamburger */
+header .nav-btn {
+  align-self: center;
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+  width: 33px
+}
+
+header .nav-btn span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #fff;
+  transition: all var(--nav-transition-time);
+  position: relative;
+}
+header .nav-btn span+span { margin-top: 6px }
+
+.nav-open header .nav-btn span:nth-child(1) { animation: ease .4s span1-x forwards; }
+.nav-open header .nav-btn span:nth-child(2) { animation: ease .4s span2-x forwards; }
+.nav-open header .nav-btn span:nth-child(3) { animation: ease .4s span3-x forwards; }
+
+.nav-close header .nav-btn span:nth-child(1) { animation: ease .4s span1 forwards; }
+.nav-close header .nav-btn span:nth-child(2) { animation: ease .4s span2 forwards; }
+.nav-close header .nav-btn span:nth-child(3) { animation: ease .4s span3 forwards; }
+
+@keyframes span1 {
+  0% { top: 10px; transform: rotate(45deg) }
+  50% { top: 10px; transform: rotate(0deg) }
+  100% { top: 0; transform: rotate(0deg) }
+}
+
+@keyframes span1-x {
+  0% { top: 0; transform: rotate(0) }
+  50% { top: 10px; transform: rotate(0) }
+  100% { top: 10px; transform: rotate(45deg) }
+}
+
+@keyframes span2 {
+  0% { transform: scale(0) }
+  50% { transform: scale(0) }
+  100% { transform: scale(1) }
+}
+
+@keyframes span2-x {
+  50% { transform: scale(0) }
+  100% { transform: scale(0) }
+}
+
+@keyframes span3 {
+  0% { bottom: 10px; transform: rotate(135deg) }
+  50% { bottom: 10px; transform: rotate(0) }
+  100% { bottom: 0; transform: rotate(0) }
+}
+
+@keyframes span3-x {
+  0% { bottom: 0; transform: rotate(0) }
+  50% { bottom: 10px; transform: rotate(0) }
+  100% { bottom: 10px; transform: rotate(135deg) }
+}
+
+/* sidebar nav */
+nav {
+  position: fixed;
+  z-index: 99;
+  height: 100vh;
+  width: 250px;
+  inset: 0 auto auto -250px;
+  padding-top: var(--nav-height);
+  background: #fff;
+  transition: var(--nav-transition-time);
+}
+body.nav-open nav { left: 0 }
+
+nav ul {
+  list-style: none;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  position: relative;
+  font-weight: bold;
+  font-family: var(--bold-font-family);
+  border-bottom: 1px solid #707070;
+}
+
+/* special links */
+nav ul li:nth-child(n+5):nth-child(-n+7) a { padding-left: 5px }
+nav ul li:nth-child(5) { border-left: 5px solid #ff6400 }
+nav ul li:nth-child(6) { border-left: 5px solid #80ff00 }
+nav ul li:nth-child(7) { border-left: 5px solid #0080ff }
+
+nav ul a,
+nav ul span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* accordion content */
+nav div > ul > li > ul {
+  background: #dfdfdf;
+  overflow: hidden;
+  max-height: 0;
+  transition: all .6s;
+}
+nav div > ul > li.open > ul { max-height: 800px }
+
+nav ul li li { 
+  font-family: var(--body-font-family);
+  border: 0;
+}
+
+nav div > ul > li > ul a { padding-left: 25px; transition: all .3s }
+nav div > ul > li.open > ul a { padding-left: 40px }
+
+/* arrows */
+nav ul li i {
+  font-style: normal;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  transform: rotate(90deg);
+  transition: .3s all;
+}
+nav ul li.open i { transform: rotate(-90deg) }
+
+
+/* login modal */
+.login-modal {
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  width: clamp(500px, 50%, 620px);
+  min-height: 200px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px 0 0;
+  transition: .6s ease;
+}
+
+@media (width <= 1000px) {
+  .login-modal {
+    width: min(90%, 500px);
+  }
+}
+
+
+.login-modal .section-outer {  
+  border-radius: 10px; 
+  padding-bottom: 20px; 
+}
+
+body.modal-open .login-modal { top: 50vh }
+
+.login-modal .close {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  color: var(--gray-color);
+  cursor: pointer;
+}
+
+.login-modal .columns > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-modal .columns.icons > div > div {
+  flex-direction: row;
+  gap: 20px;
+  width: unset;
+  justify-content: space-between;
+}
+
+.login-modal .default-content-wrapper .icon {
+  margin: 0 auto;
+  height: 48px;
+  width: 84px;
+}
+
+.login-modal .default-content-wrapper p { padding: 0 30px }
+
+.login-modal .section.columns-container { 
+  margin: 0;
+  padding: 0; 
+}
+
+/* other 888 icons */
+.icons p { margin: 0 }
+
+.login-modal .columns .icon {
+  background: #232323;
+  display: block;
+  height: 130px;
+  width: 130px;
+  border-radius: 65px;
+}
+.login-modal .columns .icon img { width: 80px }
+
+@media (width <= 540px) {
+  .login-modal .columns.icons > div > div { gap: 10px }
+  .login-modal .columns .icon { transform: scale(.9) }
+}
+
+@media (width <= 480px) {
+  .login-modal .columns.icons {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .login-modal .columns .icon { position: absolute }
+
+  .login-modal .columns p:nth-child(1) .icon { left: 0 }
+
+  .login-modal .columns p:nth-child(2) .icon { 
+    top: 160px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-modal .columns p:nth-child(3) .icon { right: 0 }
+}
+
+@media (width <= 1024px) {
+  header { height: var(--nav-height) }
+
+  header .logo img { width: 45px }
+
+  header button.login {
+    top: -10px;
+    padding: 8px 12px;
+  }
+
+  nav { padding-top: var(--nav-height) }
+}

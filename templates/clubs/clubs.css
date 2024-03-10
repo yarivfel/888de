@@ -1,0 +1,34 @@
+body.clubs main{
+    background-color: black;
+    color: white;
+  }
+
+body.clubs main h1 > strong, body.clubs main strong > h1{
+ font-size: var(--heading-font-size-xxl);
+ text-align: center;
+}
+
+body.clubs main .section.columns-container h2{
+    color: var(--light-gold-color);
+    font-size: var(--heading-font-size-s);
+    font-family: var(--body-font-family);
+}
+
+body.clubs main h3{
+    font-size: var(--heading-font-size-m);
+    font-family: var(--bold-font-family);
+}
+
+body.clubs main p{
+    font-size: var(--body-font-size-xs);
+}
+
+@media only screen and (width >= 1200px){
+    body.clubs main h1 > strong, body.clubs main strong > h1{
+        text-align: inherit;
+    }
+
+    body.clubs main .section.columns-container h2{
+        text-align: left;
+    }
+}

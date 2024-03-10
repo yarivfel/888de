@@ -1,0 +1,54 @@
+/* stylelint-disable rule-empty-line-before */
+  .button-columns > div  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button-columns > div > div {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .button-columns > div > div:nth-child(2) > a {
+    background-color: var(--green-color);
+  }
+  
+  .button-columns > div > div:nth-child(2) > a:hover {
+    background-color: var(--dark-green-color);
+  }
+  
+  .button-columns > div > div:nth-child(2) > a > .icon {
+    background-color: var(--dark-green-color);
+  }
+  
+  @media (width >= 600px) {
+  
+    .button-columns > div  {
+        flex-direction: row;
+        padding: 30px 0;
+      }
+  
+      .button-columns > div > div {
+        flex: 1;
+        margin: 0 12px;
+      }
+      
+      .button-columns > div > div > a {
+        width: 100%;
+      }
+  }
+  
+  
+  
+  @media (width >= 840px) {
+    .button-columns > div > div {
+      flex: 0;
+      margin: 0 12px;
+    }
+  
+    .button-columns > div > div > a {
+      width: 350px;
+    }
+  }

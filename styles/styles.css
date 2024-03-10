@@ -1,0 +1,450 @@
+/*
+ * Copyright 2020 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+
+/* fallback font for 888-black */
+@font-face {
+  font-family: "black888-Fallback";
+  src: local('Arial');
+  font-weight: 800;
+  ascent-override: 82.23%;
+  descent-override: 21.64%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.52%;
+}
+
+/* fallback font for 888-medium */
+@font-face {
+  font-family: "medium888-Fallback";
+  src: local('Arial');
+  font-weight: 400;
+  ascent-override: 83.10%;
+  descent-override: 21.87%;
+  line-gap-override: 0.00%;
+  size-adjust: 114.32%;
+}
+
+/* fallback font for 888-bold */
+@font-face {
+  font-family: "bold888-Fallback";
+  src: local('Arial');
+  font-weight: 700;
+  ascent-override: 82.52%;
+  descent-override: 21.72%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.12%;
+}
+
+/* fallback font for 888-ultra */
+@font-face {
+  font-family: "ultra888-Fallback";
+  src: local('Arial');
+  font-weight: 900;
+  ascent-override: 82.52%;
+  descent-override: 21.72%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.12%;
+}
+
+:root {
+  /* colors */
+  --link-color: #000;
+  --link-hover-color: #000;
+  --background-color: white;
+  --light-color: #f7f7f7;
+  --dark-color: #d2d2d2;
+  --text-color: black;
+  --blue-color: #0080ff; /* customer brand color */
+  --light-blue-color: #3299ff; /* a11y contrast fix */
+  --green-color: #80ff00;
+  --dark-green-color: #26ba29;
+  --yellow-color: #fce403;
+  --pumpkin-orange-color: #ff6400;
+  --light-black-color: #181818;
+  --med-gray-color: #aaa;
+  --footer-text-color: #777;
+  --dark-gray-color: #2c2c2c;
+  --white-color: #fff;
+  --gold-color: #e8a905;
+  --very-dark-gray-color: #1e1e1e;
+  --black-color: #000;
+  --gray-color: #454545;
+  --light-gold-color: #febc12;
+  --dark-blue-color: #03498f;
+
+  /* fonts */
+  --body-font-family: "medium888", "medium888-Fallback";
+  --heading-font-family: var(--body-font-family);
+  --bold-font-family: "bold888", "bold888-Fallback";
+  --black-font-family: "black888", "black888-Fallback";
+  --ff-888-ultra: "ultra888", "ultra888-Fallback";
+  --fixed-font-family: menlo, consolas, monospace;
+
+  /* body sizes */
+  --body-font-size-xl: 30px;
+  --body-font-size-l: 24px;
+  --body-font-size-m: 22px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
+  --body-font-size-xxs: 12px;
+
+  /* Font Weights */
+  --font-weight-heavy: 900;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-normal: 400;
+  --font-weight-light: 300;
+  --font-weight-thin: 100;
+
+  /* heading sizes */
+  --heading-font-size-xxxl: 51px; /* h1 FAQ */
+  --heading-font-size-xxl: 40px; /* h2 home, h1 innerpages */
+  --heading-font-size-xl: 34px; /* h2 carousel */
+  --heading-font-size-l: 1.67rem; /* 27.77px */
+  --heading-font-size-m: 1.5rem; /* 24px */
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 14px;
+
+  /* nav height */
+  --nav-height: 45px;
+
+  /* timing */
+  --nav-transition-time: 400ms;
+}
+
+body {
+  font-size: var(--body-font-size-s);
+  margin: 0;
+  font-family: var(--body-font-family);
+  color: var(--text-color);
+  background: var(--background-color);
+  display: none;
+}
+
+body.appear {
+  display: block;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgb(35 35 35 / 90%);
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  z-index: 999;
+}
+header.solid { background: rgb(35 35 35 / 100%) }
+
+/* push down when toolbar is enabled */
+helix-sidekick[pushdown] ~ header,
+helix-sidekick[pushdown] ~ nav { top: 49px; }
+
+h2, h3,
+h4, h5, h6 {
+  font-family: var(--body-font-family);
+  font-weight: 700;
+  scroll-margin: calc(var(--nav-height) + 1em);
+}
+
+h1 {
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  margin-bottom: 1.67rem;
+  margin-top: 0;
+  word-wrap: break-word;
+  scroll-margin: calc(var(--nav-height) + 1em);
+  display: block;
+  text-align: center;
+}
+
+h1 > strong, strong > h1 {
+  display: block;
+  font-size: var(--heading-font-size-xxxl);
+  font-family: var(--ff-888-ultra);
+  line-height: 1.5;
+  font-weight: 900;
+  text-align: left;
+}
+
+h2 {
+  font-size: var(--heading-font-size-l);
+  text-align: center;
+  font-weight: 500;
+}
+h4 { font-size: var(--heading-font-size-m) }
+h5 { font-size: var(--heading-font-size-s) }
+h6 { font-size: var(--heading-font-size-xs) }
+
+p, dl, ol, ul, pre, blockquote {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: var(--body-font-size-s);
+}
+
+li {
+  padding: 0;
+  font-size: var(--body-font-size-s);
+}
+
+code, pre {
+  font-family: var(--fixed-font-family);
+  font-size: var(--body-font-size-s);
+}
+
+code {
+  padding: .125em;
+}
+
+pre {
+  overflow: scroll;
+}
+
+main pre {
+  background-color: var(--light-color);
+  padding: 1em;
+  border-radius: .25em;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* links */
+a:any-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: inherit;
+}
+
+/* buttons */
+a.button:any-link, button {
+  font-family: var(--body-font-family);
+  display: block;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: var(--body-font-size-l);
+  border: 2px solid transparent;
+  padding: 5px 30px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--background-color);
+  margin: 16px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 30px;
+  line-height: 1;
+  border-color: var(--yellow-color);
+  background-color: var(--yellow-color);
+}
+
+a.button:hover, a.button:focus, button:hover, button:focus  {
+  background-color: var(--link-hover-color);
+  cursor: pointer;
+}
+
+button:disabled, button:disabled:hover {
+  background-color: var(--light-color);
+  cursor: unset;
+}
+
+a.button.secondary, button.secondary {
+  background-color: unset;
+  border: 2px solid currentcolor;
+  color: var(--text-color)
+}
+
+a.button.text, button.text {
+  background-color: unset;
+  border: 0;
+  text-align: unset;
+  color: inherit;
+  font-size: inherit;
+  margin: unset;
+  padding: unset;
+  white-space: normal;
+  font-weight: inherit;
+  font-style: inherit;
+  border-radius: unset;
+  line-height: inherit;
+  text-decoration: underline;
+}
+
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.icon {
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  margin-top: var(--nav-height);
+}
+
+/* sections */
+main .section {
+  padding: 20px 10px;
+}
+
+/* section metadata */
+main .section.light,
+main .section.highlight {
+  background-color: var(--light-color);
+}
+
+/* button with icon */
+main .button-columns a, main .button-container.button-icon a {
+  background-color: var(--blue-color);
+  transition: .3s all;
+  color: var(--black-color);
+  text-decoration: none;
+  font-family: var(--ff-888-ultra);
+  font-size: var(--body-font-size-l);
+  min-width: 45%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+main .button-columns a:hover, main .button-container.button-icon a:hover{
+ background-color: var(--dark-blue-color);
+}
+
+main .button-container.button-icon a>.icon{
+  background-color: var(--dark-blue-color);
+  width: 25%;
+  height: auto;
+}
+
+main .button-container.button-icon a>.icon img{
+  margin-top: 5px;
+  width: 62px;
+  height: 62px;
+}
+
+main .button-columns a>.link-button-text, main .button-container.button-icon a>.link-button-text{
+  text-align: center;
+  width: 100%;
+  line-height: 72px;
+}
+
+@keyframes fadeout {
+  0% {
+      opacity: 1;
+  }
+
+  100% {
+      opacity: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+@keyframes accordion-details-show {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (width >= 600px) {
+  h1 {
+    font-size: var(--heading-font-size-xxl);
+    line-height: 1.2;
+  }
+
+details > *:not(summary) {
+  animation: accordion-details-show 500ms ease-in-out;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  color: transparent;
+  overflow: hidden;
+}
+
+details[open] > *:not(summary) {
+  color: inherit;
+}
+
+  h2 {
+    font-size: var(--heading-font-size-l);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  main .button-columns a, main .button-container.button-icon a {
+    font-family: var(--body-font-family);
+    font-size: inherit;
+  }
+}
+
+@media (width >= 840px) {
+  main .button-columns a, main .button-container.button-icon a {
+    width: 350px;
+  }
+}
+
+@media (width >= 1024px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  main {
+    transition: .3s all;
+    position: relative;
+    left: 0;
+  }
+
+  main .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
+@media (width >= 1200px) {
+  h1, h2 {
+    text-align: left;
+  }
+}

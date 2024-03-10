@@ -1,0 +1,57 @@
+
+.inner p,
+.inner dl,
+.inner ol,
+.inner ul,
+.inner pre,
+.inner blockquote {
+  font-size: var(--body-font-size-xs);
+}
+
+.inner li {
+  padding: 0.416rem 0;
+  font-size: var(--body-font-size-xs);
+}
+
+.inner code,
+.inner pre {
+  font-family: var(--fixed-font-family);
+  font-size: var(--body-font-size-xs);
+}
+
+.inner h1,
+.inner h2 {
+    text-align: center;
+  }
+
+.inner h1 > strong,
+.inner strong > h1 {
+  font-family: var(--bold-font-family);
+  font-size: var(--heading-font-size-m);
+  text-align: center;
+}
+
+@media (width >= 600px) {
+  .inner h1 {
+    font-size: var(--heading-font-size-xxl);
+    line-height: 1.2;
+  }
+
+  .inner h1 > strong,
+  .inner strong > h1 {
+    font-size: var(--heading-font-size-xxl);
+  }
+}
+
+@media (width >= 1200px) {
+  .inner h1,
+  .inner h1 > strong,
+  .inner strong > h1,
+  .inner h2 {
+    text-align: left;
+  }
+
+  .inner h2 {
+    text-align: left;
+  }
+}

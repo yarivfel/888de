@@ -1,0 +1,43 @@
+.anchor-nav {
+  position: fixed;
+  top: calc(var(--nav-height) + 24px);
+  margin-left: -10px;
+  min-width: 270px;
+  list-style: none;
+  color: #666;
+  padding: 0;
+}
+
+.anchor-nav li a {
+  display: block;
+  width: 270px;
+  padding: 5px 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: .5s;
+}
+
+.anchor-nav li.active a {
+  background: #4f4f4f;
+  color: #fff;
+}
+
+.anchor {
+  scroll-margin-top: calc(var(--nav-height) + 20px);
+}
+
+.anchor:not(:first-child) {
+  margin-top: 100px;
+}
+
+.inner-anchor main .section .default-content-wrapper {
+  margin-left: 290px;
+}
+
+
+@media (width < 1024px) {
+  .anchor-nav { display: none }
+
+  .inner-anchor main .section .default-content-wrapper { margin-left: 0 }
+}

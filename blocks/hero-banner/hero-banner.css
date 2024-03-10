@@ -1,0 +1,191 @@
+/* stylelint-disable media-feature-range-notation */
+main .section.hero-banner-container {
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: 0;
+    z-index: 1;
+    position: relative;
+}
+
+main .section.hero-banner-container>div {
+    margin: 0;
+    padding: 0;
+    max-width: unset;
+}
+
+
+.hero-banner.block {
+    position: relative;
+}
+
+
+.hero-banner.block .hero-banner-image {
+    z-index: -9999;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: clip;
+}
+
+.hero-banner.block .mobile-background {
+    display: block;
+}
+
+.hero-banner.block .hero-background {
+    display: none;
+}
+
+.hero-banner.block .hero-banner-image picture {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.hero-banner.block .hero-banner-image img {
+    object-position: center center;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.hero-banner.block .hero-banner-section {
+    display: none;
+}
+
+.hero-banner.block .hero-content-wrapper {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 80%;
+    transform: none;
+    margin: 0 auto;
+    padding: 28px 0 126px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* center align above image */
+.hero-banner.block .hero-content-wrapper .hero-icon-mob {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-banner.block .hero-icon-mob img {
+    width: 60%;
+    float: none;
+    margin: 0 auto;
+}
+
+.hero-banner.block .hero-icon-dt {
+    display: none;
+}
+
+.hero-banner.block .hero-steps-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.hero-banner.block .hero-steps-wrapper .hero-banner-section-mobile {
+    margin: 0;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.hero-banner.block .hero-steps-wrapper a {
+    transition: .3s all;
+}
+
+.hero-banner.block .hero-steps-wrapper a:hover {
+    transform: scale(1.15);
+}
+
+.hero-banner.block .hero-steps-wrapper a img {
+    width: 100%;
+}
+
+.hero-banner.block .hero-steps-wrapper a img.hero-mobile-section-down-arrow {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    width: 29px;
+    height: 35px;
+    bottom: -4vw;
+    max-width: 20px;
+}
+
+/* hide the last down arrow */
+.hero-banner.block .hero-steps-wrapper a:last-child img.hero-mobile-section-down-arrow {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .hero-banner.block {
+        min-height: 600px;
+    }
+
+    .hero-banner.block .mobile-background {
+        display: none;
+    }
+
+    .hero-banner.block .hero-background {
+        display: block;
+    }
+    
+    .hero-banner.block .hero-content-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 670px;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        padding: 28px 0 126px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-banner.block .hero-steps-wrapper .hero-banner-section-mobile {
+        display: none;
+    }
+
+    .hero-banner.block .hero-steps-wrapper .hero-banner-section {
+        display: block;
+        margin-right: 30px;
+    }
+
+    .hero-banner.block .hero-steps-wrapper {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .hero-banner.block .hero-content-wrapper .hero-icon-dt {
+        display: block;
+    }
+
+    .hero-banner.block .hero-content-wrapper .hero-icon-mob {
+        display: none;
+    }
+
+    .hero-banner.block .hero-icon-dt img {
+        width: 100%;
+        float: left;
+        margin-bottom: 0;
+    }
+
+}
+
+@media screen and (min-width: 440px) {
+    .hero-banner.block .hero-steps-wrapper a img.hero-mobile-section-down-arrow {
+        bottom: -24%;
+        max-width: 100%;
+    }
+}
